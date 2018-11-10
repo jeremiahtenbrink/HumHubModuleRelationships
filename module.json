@@ -1,0 +1,12 @@
+{
+    "id": "relationships",
+    "name": "Relationships",
+    "description": "Give users the ability to create relationships.",
+    "keywords": [
+    ],
+    "version": "0.1",
+    "humhub": {
+        "minVersion": "1.2"
+    },
+    "screenshots": ["assets/screen1.jpg"]
+}
