@@ -58,10 +58,11 @@ class RelationshipType extends \yii\db\ActiveRecord
     }
 
     /**
-     * @return \yii\db\ActiveQuery
+     * @return string
      */
     public function getRelationshipCategory()
     {
-        return $this->hasOne(RelationshipCategory::className(), ['id' => 'relationship_category']);
+        $category = $this->hasOne(RelationshipCategory::class, ['id' => 'relationship_category'])->one();
+        return $category->category;
     }
 }
