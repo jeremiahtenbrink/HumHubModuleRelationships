@@ -17,7 +17,13 @@ Then enable the module and in the admin section add a category and some relation
 
 Then add the relationship widget to the profile view file in the themes folder. 
 
-To do this add the following code to the file. 
+First Add this code to the top under all of the other use statmens. 
+
+```
+use conerd\humhub\modules\relationships\widgets\Relationships;
+```
+
+Then add the following code to the view file just under the div class="col-xs-12 col-md-8 layout-content-container". 
 
 ```
 <?= Relationships::widget(['user' => $user]); ?>
