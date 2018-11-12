@@ -61,7 +61,7 @@ class Module extends \humhub\modules\content\components\ContentContainerModule
     */
     public function getContentContainerName(ContentContainerActiveRecord $container)
     {
-        return Yii::t('RelationshipsModule.base', 'Relationships');
+        return 'Relationships';
     }
 
     /**
@@ -69,10 +69,42 @@ class Module extends \humhub\modules\content\components\ContentContainerModule
     */
     public function getContentContainerDescription(ContentContainerActiveRecord $container)
     {
-        return Yii::t('RelationshipsModule.base', 'Create relationships between users.');
+        return "Create Relatinoships between users.";
     }
 
     public function getPath(){
         return "protected/modules/relationships";
+    }
+
+    /**
+     * Returns if the friendship system is enabled
+     *
+     * @return boolean is enabled
+     */
+    public function getIsEnabled()
+    {
+        if (Yii::$app->getModule('relationships')->settings->get('enable')) {
+            return true;
+        }
+
+        return false;
+    }
+
+    public function getName()
+    {
+        return "Relationships";
+    }
+
+    /**
+     * @inheritdoc
+     */
+    public function getNotifications()
+    {
+        return [
+            'conerd\humhub\modules\relationships\notifications\CreateRelationship',
+            'conerd\humhub\modules\relationships\notifications\ApproveRelationship',
+            'conerd\humhub\modules\relationships\notifications\DenyRelationship',
+            'conerd\humhub\modules\relationships\notifications\RemoveRelationship',
+        ];
     }
 }

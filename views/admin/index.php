@@ -13,10 +13,10 @@ use kartik\widgets\ActiveForm;
 
 <div class="container-fluid">
     <div class="panel panel-default">
-        <div class="panel-heading"><strong>Relationships</strong> <?= Yii::t('RelationshipsModule.base', 'configuration') ?></div>
+        <div class="panel-heading"><strong>Relationships</strong> <?= "Configuration" ?></div>
 
         <div class="panel-body">
-            <p><?= Yii::t('RelationshipsModule.base', 'Below you will be able to add relationship categories and types.') ?></p>
+            <p><?= 'Below you will be able to add relationship categories and types.' ?></p>
 
         </div>
     </div>
