@@ -13,7 +13,8 @@ use yii\bootstrap\Html;
 use humhub\modules\notification\components\BaseNotification;
 
 /**
- * Friends Request
+ * @author CO_Nerd
+ * Deny Relationship Notification
  *
  * @since 1.1
  */

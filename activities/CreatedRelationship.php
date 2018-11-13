@@ -12,8 +12,9 @@ use humhub\modules\activity\components\BaseActivity;
 use humhub\modules\content\models\Content;
 
 /**
- * Activity when somebody follows an object
+ * Activity when one user accepts the relationship a user was trying to create.
  *
+ * @author CO_Nerd revised code from
  * @author luke
  */
 class CreatedRelationship extends BaseActivity
@@ -29,6 +30,9 @@ class CreatedRelationship extends BaseActivity
      */
     public $viewName = "createdRelationship";
 
+    /**
+     * @inheritdoc
+     */
     public $visibility = Content::VISIBILITY_PUBLIC;
 
 

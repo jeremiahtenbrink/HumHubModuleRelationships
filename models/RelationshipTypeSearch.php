@@ -8,6 +8,7 @@ use yii\data\ActiveDataProvider;
 use conerd\humhub\modules\relationships\models\RelationshipType;
 
 /**
+ * @author CO_Nerd
  * RelationshipTypeSearch represents the model behind the search form of `conerd\humhub\modules\relationships\models\RelationshipType`.
  */
 class RelationshipTypeSearch extends RelationshipType

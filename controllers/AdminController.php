@@ -10,6 +10,12 @@ use humhub\modules\admin\components\Controller;
 use Yii;
 use yii\helpers\Url;
 
+/**
+ * @author CO_Nerd
+ * Class AdminController
+ * @package conerd\humhub\modules\relationships\controllers
+ */
+
 class AdminController extends Controller
 {
 
@@ -69,6 +75,11 @@ class AdminController extends Controller
         return $this->redirect(['index']);
     }
 
+    /**
+     * Updates the Relationship category in the db from the category id.
+     * @param $id
+     * @return AdminController|string|\yii\console\Response|\yii\web\Response
+     */
     public function actionUpdateCategory($id)
     {
         $category = RelationshipCategory::find()->where(['id' => $id])->one();
@@ -91,6 +102,10 @@ class AdminController extends Controller
 
     }
 
+    /**
+     * Creates a new relationship Category in the db.
+     * @return AdminController|string|\yii\console\Response|\yii\web\Response
+     */
     public function actionCreateCategory()
     {
         $category = new RelationshipCategory();
@@ -112,6 +127,10 @@ class AdminController extends Controller
         ]);
     }
 
+    /**
+     * Creates a new relationship type in the db.
+     * @return AdminController|string|\yii\console\Response|\yii\web\Response
+     */
     public function actionCreateType()
     {
         $type = new RelationshipType();
@@ -133,6 +152,11 @@ class AdminController extends Controller
         ]);
     }
 
+    /**
+     * Updates a relationship Type in the database from the already created relationship type.
+     * @param $id
+     * @return AdminController|string|\yii\console\Response|\yii\web\Response
+     */
     public function actionUpdateType($id)
     {
         $type = RelationshipType::find()->where(['id' => $id])->one();

@@ -15,6 +15,11 @@ use humhub\modules\user\models\User;
 use Yii;
 use yii\helpers\Url;
 
+/**
+ * @author CO_Nerd
+ * Class Relationships
+ * @package conerd\humhub\modules\relationships\widgets
+ */
 class Relationships extends Widget
 {
 
@@ -47,6 +52,10 @@ class Relationships extends Widget
         parent::init();
     }
 
+    /**
+     * Return the Relationship panel for the users profile.
+     * @return string
+     */
     public function run()
     {
         $relationships = Relationship::find()->where(['user_id' => $this->user->id])->all();

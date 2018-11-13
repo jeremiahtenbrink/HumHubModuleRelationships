@@ -13,45 +13,60 @@ use humhub\modules\friendship\models\Friendship;
 use humhub\modules\user\controllers\ProfileController;
 use Yii;
 
+/**
+ * @author CO_Nerd
+ * Class RelationshipController
+ * @package conerd\humhub\modules\relationships\controllers
+ */
 class RelationshipController extends Controller
 {
 
     public $subLayout = "@relationships/views/layouts/default";
 
-    /**
-     * Renders the index view for the module
-     *
-     * @return string
-     */
 
+    /**
+     * Renders the create relationship form for the user to create a relationship.
+     * @return RelationshipController|string|\yii\console\Response|\yii\web\Response
+     */
     public function actionCreateRelationship()
     {
+
         $relationship = new Relationship();
+
         $relationshipCategory = new RelationshipCategory();
+
         $user = User::find()->where(['id' => Yii::$app->user->id])->one();
 
+        // load relationship modal if located in post
         if ($relationship->load(Yii::$app->request->post())){
 
+            // assign the creator of the relationship to the current user
             $relationship->user_id = Yii::$app->user->id;
 
             if ($relationship->save()){
 
+                // if the relationship has saved correctly send the user back to his profile.
                 /* @var $user User */
                 return $this->redirect(['/u/' . $user->username . '/user/profile/home']);
             }
         }
 
+        // find all the users friends for the relationship drop down.
+        // todo: Change the drop down in the view to a search drop down.
         $friendships = Friendship::find()->where(['user_id' => Yii::$app->user->id])->all();
         $friends = [];
 
         foreach ($friendships as $friend)
         {
+            // create a array of the friends id assigned to the friends username for the user to pick
+            // the friend to create the relationship with.
             /* @var $friend Friendship */
             /* @var $user User */
             $user = User::find()->where(['id' => $friend->friend_user_id])->one();
             $friends[$friend->friend_user_id] = $user->getDisplayName();
         }
 
+        // if ajax then render ajax.
         if (Yii::$app->request->isAjax)
         {
             return $this->renderAjax('create-relationship', [
@@ -70,6 +85,12 @@ class RelationshipController extends Controller
         ]);
     }
 
+    /**
+     * Generates the list of available relationship types based on the user selected drop down of relationship category.
+     * Used for ajax call from jquery.
+     * Returns the available options in html code.
+     * @param $category
+     */
     public function actionGetTypes($category)
     {
         $relationshipTypes = RelationshipType::find()->where(['relationship_category' => $category])->all();
@@ -89,6 +110,15 @@ class RelationshipController extends Controller
 
     }
 
+    /**
+     * This function denies the creation of the relationship and deletes the relationship from
+     * the database.
+     * @param $id
+     * @param $url
+     * @return RelationshipController|\yii\console\Response|\yii\web\Response
+     * @throws \Throwable
+     * @throws \yii\db\StaleObjectException
+     */
     public function actionDenyRelationship($id, $url)
     {
         $relatinoship = Relationship::find()->where(['id' => $id])->one();
@@ -99,6 +129,14 @@ class RelationshipController extends Controller
     }
 
 
+    /**
+     * Same as denyRelationship except it searches for all relationships between the two users and removes all of them.
+     * @param $id
+     * @param $url
+     * @return RelationshipController|\yii\console\Response|\yii\web\Response
+     * @throws \Throwable
+     * @throws \yii\db\StaleObjectException
+     */
     public function actionDenyRelationships($id, $url)
     {
         $relationship = Relationship::find()->where(['id' => $id])->one();
@@ -115,6 +153,15 @@ class RelationshipController extends Controller
         return $this->redirect($url);
     }
 
+    /**
+     * Removes relationship from the database. This method is called when the person who created the relationship
+     * is the one that removes the relationship.
+     * @param $id
+     * @param $url
+     * @return RelationshipController|\yii\console\Response|\yii\web\Response
+     * @throws \Throwable
+     * @throws \yii\db\StaleObjectException
+     */
     public function actionRemoveRelationship($id, $url)
     {
         $relationship = Relationship::find()->where(['id' => $id])->one();
@@ -132,6 +179,14 @@ class RelationshipController extends Controller
         return $this->redirect($url);
     }
 
+    /**
+     * Removes all relationships.
+     * @param $id
+     * @param $url
+     * @return RelationshipController|\yii\console\Response|\yii\web\Response
+     * @throws \Throwable
+     * @throws \yii\db\StaleObjectException
+     */
     public function actionRemoveRelationships($id, $url)
     {
         /* @var $relationship Relationship */
@@ -154,6 +209,13 @@ class RelationshipController extends Controller
         return $this->redirect($url);
     }
 
+    /**
+     * Approves of the relationship from the other user, not from the originator.
+     * Once the relationship is approved. The modal will then create the activity.
+     * @param $id
+     * @param $url
+     * @return RelationshipController|\yii\console\Response|\yii\web\Response
+     */
     public function actionApproveRelationship($id, $url)
     {
         $relationship = Relationship::find()->where(['id' => $id])->one();
@@ -172,6 +234,12 @@ class RelationshipController extends Controller
 
     }
 
+    /**
+     * Approves of all the relationships like approve relationship.
+     * @param $id
+     * @param $url
+     * @return RelationshipController|\yii\console\Response|\yii\web\Response
+     */
     public function actionApproveRelationships($id, $url)
     {
         $relationship = Relationship::find()->where(['id' => $id])->one();

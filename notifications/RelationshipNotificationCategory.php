@@ -17,7 +17,8 @@ use humhub\modules\notification\targets\WebTarget;
 use humhub\modules\notification\targets\MobileTarget;
 
 /**
- * Description of SpaceJoinNotificationCategory
+ * @author CO_Nerd
+ * Relationship Notification Category
  *
  * @author buddha
  */

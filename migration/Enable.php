@@ -11,6 +11,7 @@ namespace conerd\humhub\modules\relationships\migration;
 use yii\db\Migration;
 use yii;
 /**
+ * @author CO_Nerd
  * Class enable
  */
 class Enable extends Migration

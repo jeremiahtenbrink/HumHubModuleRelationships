@@ -5,23 +5,13 @@ namespace  conerd\humhub\modules\relationships;
 use Yii;
 use yii\helpers\Url;
 
+/**
+ * @author CO_Nerd
+ * Class Events
+ * @package conerd\humhub\modules\relationships
+ */
 class Events
 {
-    /**
-     * Defines what to do when the top menu is initialized.
-     *
-     * @param $event
-     */
-    public static function onTopMenuInit($event)
-    {
-        /*$event->sender->addItem([
-            'label' => 'Relationships',
-            'icon' => '<i class="fa fa-heartbeat"></i>',
-            'url' => Url::to(['/relationships/index']),
-            'sortOrder' => 99999,
-            'isActive' => (Yii::$app->controller->module && Yii::$app->controller->module->id == 'relationships' && Yii::$app->controller->id == 'index'),
-        ]);*/
-    }
 
     /**
      * Defines what to do if admin menu is initialized.

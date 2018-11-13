@@ -13,6 +13,11 @@ use conerd\humhub\modules\relationships\models\Relationship;
 use humhub\modules\user\models\User;
 use Yii;
 
+/**
+ * @author CO_Nerd
+ * Class RelationshipButton
+ * @package conerd\humhub\modules\relationships\widgets
+ */
 class RelationshipButton extends Widget
 {
     /**
@@ -50,6 +55,10 @@ class RelationshipButton extends Widget
     }
 
 
+    /**
+     * Returns the buttons for the users profile in the relationship panel.
+     * @return string|void
+     */
     public function run()
     {
 

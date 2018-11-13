@@ -5,6 +5,8 @@ namespace conerd\humhub\modules\relationships\models;
 use Yii;
 
 /**
+ *
+ * @author CO_Nerd
  * This is the model class for table "relationship_category".
  *
  * @property int $id

@@ -8,6 +8,7 @@ use yii\data\ActiveDataProvider;
 use conerd\humhub\modules\relationships\models\RelationshipCategory;
 
 /**
+ * @author CO_Nerd
  * RelationshipCategorySearch represents the model behind the search form of `conerd\humhub\modules\relationships\models\RelationshipCategory`.
  */
 class RelationshipCategorySearch extends RelationshipCategory
