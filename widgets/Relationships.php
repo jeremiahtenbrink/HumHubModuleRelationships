@@ -76,7 +76,7 @@ class Relationships extends Widget
             'user' => $this->user,
             'relationshipUsers' => $relationshipUsers,
             'isProfileOwner' => $this->isProfileOwner,
-            'url' => $url,
+            'userUrl' => $url,
         ]);
     }
 }

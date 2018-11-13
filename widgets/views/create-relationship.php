@@ -11,9 +11,12 @@
 
 use humhub\libs\Html;
 use yii\helpers\Url;
+
+\conerd\humhub\modules\relationships\assets\Assets::register($this);
 ?>
 
 <div class="btn-group pull-right">
     <?php $buttonUrl = Url::to(['/relationships/relationship/create-relationship']) ?>
-    <?= Html::a('Create Relationship', $buttonUrl, ['class' => 'btn btn-default']) ?>
+    <?= Html::a('Create Relationship', $buttonUrl, ['class' => 'btn btn-default', 'data-target' => '#globalModal']) ?>
 </div>
+

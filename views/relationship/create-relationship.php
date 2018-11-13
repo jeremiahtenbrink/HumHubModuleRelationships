@@ -20,7 +20,7 @@ conerd\humhub\modules\relationships\assets\Assets::register($this);
 
 ?>
 
-<div class="create-releationship">
+<div class="create-releationship modal-dialog modal-dialog-normal animated fadeIn">
     <div class="panel panel-default">
         <div class="panel-heading">
             <h4>Create Relationship</h4>

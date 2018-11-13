@@ -8,6 +8,7 @@ use conerd\humhub\modules\relationships\models\RelationshipType;
 use conerd\humhub\modules\relationships\models\RelationshipTypeSearch;
 use humhub\modules\admin\components\Controller;
 use Yii;
+use yii\helpers\Url;
 
 class AdminController extends Controller
 {
@@ -48,7 +49,7 @@ class AdminController extends Controller
     {
         $category = RelationshipCategory::find()->where(['id' => $id])->one();
         $category->delete();
-        return $this->redirect('index');
+        return $this->redirect(['index']);
     }
 
     /**
@@ -65,7 +66,7 @@ class AdminController extends Controller
     {
         $type = RelationshipType::find()->where(['id' => $id])->one();
         $type->delete();
-        return $this->redirect('index');
+        return $this->redirect(['index']);
     }
 
     public function actionUpdateCategory($id)
@@ -74,7 +75,14 @@ class AdminController extends Controller
 
         if ($category->load(Yii::$app->request->post()) && $category->save())
         {
-            return $this->redirect('index');
+            return $this->redirect(['index']);
+        }
+
+        if (Yii::$app->request->isAjax)
+        {
+            return $this->renderAjax('category', [
+                'category' => $category,
+            ]);
         }
 
         return $this->render('category',[
@@ -89,7 +97,14 @@ class AdminController extends Controller
 
         if ($category->load(Yii::$app->request->post()) && $category->save())
         {
-            return $this->redirect('index');
+            return $this->redirect(['index']);
+        }
+
+        if (Yii::$app->request->isAjax)
+        {
+            return $this->renderAjax('category', [
+                'category' => $category,
+            ]);
         }
 
         return $this->render('category', [
@@ -103,7 +118,14 @@ class AdminController extends Controller
 
         if ($type->load(Yii::$app->request->post()) && $type->save())
         {
-            return $this->redirect('index');
+            return $this->redirect(['index']);
+        }
+
+        if (Yii::$app->request->isAjax)
+        {
+            return $this->render('type', [
+                'type' => $type,
+            ]);
         }
 
         return $this->render('type', [
@@ -118,6 +140,13 @@ class AdminController extends Controller
         if ($type->load(Yii::$app->request->post()) && $type->save())
         {
             return $this->redirect('index');
+        }
+
+        if (Yii::$app->request->isAjax)
+        {
+            return $this->render('type', [
+                'type' => $type,
+            ]);
         }
 
         return $this->render('type',[

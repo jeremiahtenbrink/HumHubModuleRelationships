@@ -16,7 +16,7 @@ use yii\helpers\ArrayHelper;
 
 ?>
 <div class="row">
-    <div class="col-md-12 col-lg-6">
+    <div class="col-md-12 col-lg-6 modal-dialog modal-dialog-normal animated fadeIn">
         <div class="panel panel-default">
             <div class="panel-heading">
                 <?php

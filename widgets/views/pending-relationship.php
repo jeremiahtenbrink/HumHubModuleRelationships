@@ -8,7 +8,7 @@
 
 /* @var $this \yii\web\View */
 /* @var $relationship \conerd\humhub\modules\relationships\models\Relationship */
-/* @var $url string */
+/* @var $userUrl string */
 
 use humhub\libs\Html;
 use yii\helpers\Url;
@@ -16,7 +16,7 @@ use yii\helpers\Url;
 
 ?>
 <div class="btn-group pull-right">
-   <?= Html::a('Approve Relationship', Url::to(['/relationships/relationship/approve-relationship', 'id' => $relationship->id, 'url'=> $url]), ['class' => 'btn btn-success', 'style' => 'margin-right:10px']) ?>
-   <?= Html::a('Deny Relationship', Url::to(['/relationships/relationship/deny-relationship', 'id' => $relationship->id, 'url' => $url]), ['class' => 'btn btn-danger', 'style' => 'margin-right:10px']) ?>
+   <?= Html::a('Approve Relationship/s', Url::to(['/relationships/relationship/approve-relationships', 'id' => $relationship->id, 'url'=> $userUrl]), ['class' => 'btn btn-success', 'style' => 'margin-right:10px']) ?>
+   <?= Html::a('Deny Relationship/s', Url::to(['/relationships/relationship/deny-relationships', 'id' => $relationship->id, 'url' => $userUrl]), ['class' => 'btn btn-danger', 'style' => 'margin-right:10px']) ?>
 </div>
 

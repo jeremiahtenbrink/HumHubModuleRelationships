@@ -2,10 +2,13 @@
 
 namespace conerd\humhub\modules\relationships\models;
 
+use conerd\humhub\modules\relationships\activities\CreatedRelationship;
 use conerd\humhub\modules\relationships\notifications\ApproveRelationship;
 use conerd\humhub\modules\relationships\notifications\CreateRelationship;
 use conerd\humhub\modules\relationships\notifications\DenyRelationship;
 use conerd\humhub\modules\relationships\notifications\RemoveRelationship;
+use humhub\modules\content\components\ContentActiveRecord;
+use humhub\modules\content\models\Content;
 use humhub\modules\user\models\User;
 use Yii;
 
@@ -22,8 +25,14 @@ use Yii;
  * @property RelationshipType $relationshipType
  * @property User $user
  */
-class Relationship extends \yii\db\ActiveRecord
+class Relationship extends ContentActiveRecord
 {
+
+    protected $moduleId = 'relationships';
+
+    protected $canMove = false;
+
+
     /**
      * {@inheritdoc}
      */
@@ -60,6 +69,16 @@ class Relationship extends \yii\db\ActiveRecord
         ];
     }
 
+    public function getContentName()
+    {
+        return "Relationship";
+    }
+
+    public function getContentDescription()
+    {
+        return "Gives users the ability to create different relationship types with each other.";
+    }
+
 
     /**
      * @return \yii\db\ActiveQuery
@@ -92,9 +111,11 @@ class Relationship extends \yii\db\ActiveRecord
      */
     public function afterSave($insert, $changedAttributes)
     {
-        if ('approved')
+        if ($this->approved)
         {
             ApproveRelationship::instance()->from($this->otherUser)->about($this)->send($this->user);
+            CreatedRelationship::instance()->from($this->user)->container($this->user)->about($this)->create();
+
         }else
         {
             CreateRelationship::instance()->from($this->user)->about($this)->send($this->otherUser);
@@ -120,4 +141,6 @@ class Relationship extends \yii\db\ActiveRecord
     {
         RemoveRelationship::instance()->from($this->user)->about($this)->send($this->otherUser);
     }
+
+
 }

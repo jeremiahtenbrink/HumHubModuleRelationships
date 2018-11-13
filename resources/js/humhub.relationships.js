@@ -19,6 +19,11 @@ humhub.module('relationships', function(module, require, $) {
 
 });
 
+function CreateRelationshipModal(element)
+{
+
+}
+
 function GetRelationshipTypes($element){
     "use strict";
     var url = $element.getAttribute('url');

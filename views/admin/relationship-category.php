@@ -22,7 +22,7 @@ use yii\helpers\Url;
 <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
 
     <p>
-        <?= \humhub\libs\Html::a('Create Relationship Category', ['create-category'], ['class' => 'btn btn-success']) ?>
+        <?= \humhub\libs\Html::a('Create Relationship Category', ['create-category'], ['class' => 'btn btn-success', 'data-target' => '#globalModal']) ?>
     </p>
 
 <?= GridView::widget([

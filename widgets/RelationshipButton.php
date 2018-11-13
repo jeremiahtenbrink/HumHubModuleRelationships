@@ -66,16 +66,17 @@ class RelationshipButton extends Widget
             return;
         }
 
+
         if ($relationship->approved)
         {
             return $this->render('relationship-button', [
                 'relationship' => $relationship,
-                'url' => $this->url,
+                'userUrl' => $this->url,
             ]);
         }else {
             return $this->render('pending-relationship', [
                 'relationship' => $relationship,
-                'url' => $this->url,
+                'userUrl' => $this->url,
             ]);
         }
 
