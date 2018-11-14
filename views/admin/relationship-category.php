@@ -43,11 +43,13 @@ use yii\helpers\Url;
                 'update' => function ($url, $model) {
                     return Html::a('<span class="glyphicon glyphicon-pencil"></span>', $url, [
                         'title' => Yii::t('app', 'lead-update'),
+                        'data-target' => '#globalModal'
                     ]);
                 },
                 'delete' => function ($url, $model) {
                     return Html::a('<span class="glyphicon glyphicon-trash"></span>', $url, [
                         'title' => Yii::t('app', 'lead-delete'),
+
                     ]);
                 }
 

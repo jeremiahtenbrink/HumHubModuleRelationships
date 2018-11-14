@@ -2,6 +2,8 @@
 
 namespace  conerd\humhub\modules\relationships;
 
+use conerd\humhub\modules\relationships\models\Relationship;
+use humhub\components\Event;
 use Yii;
 use yii\helpers\Url;
 
@@ -28,5 +30,12 @@ class Events
             'isActive' => (Yii::$app->controller->module && Yii::$app->controller->module->id == 'relationships' && Yii::$app->controller->id == 'admin'),
             'sortOrder' => 99999,
         ]);
+    }
+
+    public static function onUserDelete(Event $event)
+    {
+        $user = $event->sender;
+        Relationship::deleteAll(['user_id' => $user->id]);
+
     }
 }

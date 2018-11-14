@@ -2,7 +2,7 @@
 
 use conerd\humhub\modules\relationships\Events;
 use humhub\modules\admin\widgets\AdminMenu;
-use humhub\widgets\TopMenu;
+use humhub\modules\user\models\User;
 
 return [
 	'id' => 'relationships',
@@ -10,14 +10,11 @@ return [
 	'namespace' => 'conerd\humhub\modules\relationships',
 	'events' => [
 		[
-			'class' => TopMenu::class,
-			'event' => TopMenu::EVENT_INIT,
-			'callback' => [Events::class, 'onTopMenuInit'],
-		],
-		[
 			'class' => AdminMenu::class,
 			'event' => AdminMenu::EVENT_INIT,
 			'callback' => [Events::class, 'onAdminMenuInit']
 		],
+        [User::class, User::EVENT_BEFORE_SOFT_DELETE, [Events::class, 'onUserSoftDelete']],
+        [User::class, User::EVENT_BEFORE_DELETE, [Events::class, 'onUserDelete']],
 	],
 ];

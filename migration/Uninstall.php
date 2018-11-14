@@ -15,21 +15,20 @@ class Uninstall extends Migration
 
     public function up()
     {
-        $tables = Yii::$app->db->schema->getTableNames();
+        $tablesNames = Yii::$app->db->schema->getTableNames();
 
-        if (in_array('relationship', $tables)){
+        if (in_array('relationship', $tablesNames)) {
             $this->dropTable('relationship');
         }
 
-        if (in_array('relationship_type', $tables))
-        {
+        if (in_array('relationship_type', $tablesNames)) {
             $this->dropTable('relationship_type');
         }
 
-        if (in_array('relationship_category', $tables))
-        {
+        if (in_array('relationship_category', $tablesNames)) {
             $this->dropTable('relationship_category');
         }
+
     }
 
     public function down()

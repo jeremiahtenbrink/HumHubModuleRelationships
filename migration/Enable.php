@@ -20,7 +20,8 @@ class Enable extends Migration
     {
         $tableNames = Yii::$app->db->schema->getTableNames();
 
-        if (!isset($tableNames['relationship_category']))
+
+        if (!in_array('relationship_category', $tableNames))
         {
             $this->createTable('relationship_category', [
                'id' => $this->primaryKey(),
@@ -29,7 +30,7 @@ class Enable extends Migration
 
         }
 
-        if (!isset($tableNames['relationship_type']))
+        if (!in_array('relationship_type', $tableNames))
         {
             $this->createTable('relationship_type', [
                'id' => $this->primaryKey(),
@@ -40,7 +41,7 @@ class Enable extends Migration
 
         }
 
-        if (!isset($tableNames['relationship']))
+        if (!in_array('relationship', $tableNames))
         {
             $this->createTable('relationship', [
                 'id' => $this->primaryKey(),
@@ -51,6 +52,29 @@ class Enable extends Migration
             ]);
         }
 
+        $tables = Yii::$app->db->schema->getTableSchemas();
+
+        $this->createForeignKey($tableNames, 'relationship', 'relationship_user_fk',
+        'user_id', 'user', 'id', $tables, 'CASCADE', 'CASCADE');
+        $this->createForeignKey($tableNames, 'relationship', 'relationship_other_user_fk',
+            'other_user_id', 'user', 'id', $tables, 'CASCADE', 'CASCADE');
+        $this->createForeignKey($tableNames, 'relationship', 'relationship_relationship_type_fk',
+            'relationship_type', 'relationship_type', 'id', $tables, 'CASCADE', 'CASCADE');
+        $this->createForeignKey($tableNames, 'relationship_type', 'relationship_type_category_fk',
+            'relationship_category', 'relationship_category', 'id', $tables, 'CASCADE', 'CASCADE');
+
+
     }
+
+    public function createForeignKey($tableNames, $tableName, $foreignKeyName, $tableColumn, $foreignTable, $foreignColumn,  $tables, $onDelete, $onUpdate)
+    {
+        /* @var $tables \yii\db\TableSchema[] */
+        $tableIndex = array_search('relationship', $tableNames);
+        if (!array_search($foreignKeyName, $tables[$tableIndex]->foreignKeys))
+        {
+            $this->addForeignKey($foreignKeyName, $tableName, $tableColumn, $foreignTable, $foreignColumn, $onDelete, $onUpdate);
+        }
+    }
+
 
 }

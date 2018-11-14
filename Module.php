@@ -4,6 +4,7 @@ namespace conerd\humhub\modules\relationships;
 
 use conerd\humhub\modules\relationships\migration\Enable;
 use conerd\humhub\modules\relationships\migration\Uninstall;
+use conerd\humhub\modules\relationships\models\Relationship;
 use Yii;
 use yii\helpers\Url;
 use humhub\modules\content\components\ContentContainerActiveRecord;
@@ -53,6 +54,12 @@ class Module extends \humhub\modules\content\components\ContentContainerModule
     */
     public function disable()
     {
+
+        foreach (Relationship::find()->all() as $relationship)
+        {
+            $relationship->delete();
+        }
+
         // Calls the uninstall script in the migration folder to remove all database objects.
         $disable = new Uninstall();
         $disable->up();
