@@ -38,4 +38,25 @@ class Events
         Relationship::deleteAll(['user_id' => $user->id]);
 
     }
+
+    /**
+     * Add relationship navigation entry to account menu
+     *
+     * @param \yii\base\Event $event
+     */
+    public static function onAccountMenuInit($event)
+    {
+        if (Yii::$app->getModule('relationships')->getIsEnabled()) {
+            $event->sender->addItem([
+                'label' => "Relationships",
+                'url' => Url::to(['/relationships/settings/manage']),
+                'icon' => '<i class="fa fa-heartbeat"></i>',
+                'group' => 'account',
+                'sortOrder' => 150,
+                'isActive' => (Yii::$app->controller->module && Yii::$app->controller->module->id == 'relationships'),
+            ]);
+        }
+    }
+
+
 }

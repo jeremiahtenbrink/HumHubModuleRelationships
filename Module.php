@@ -5,6 +5,8 @@ namespace conerd\humhub\modules\relationships;
 use conerd\humhub\modules\relationships\migration\Enable;
 use conerd\humhub\modules\relationships\migration\Uninstall;
 use conerd\humhub\modules\relationships\models\Relationship;
+use humhub\modules\content\models\ContentContainer;
+use humhub\modules\content\models\ContentContainerModuleState;
 use Yii;
 use yii\helpers\Url;
 use humhub\modules\content\components\ContentContainerActiveRecord;
@@ -43,6 +45,7 @@ class Module extends \humhub\modules\content\components\ContentContainerModule
     public function enable()
     {
         // call the enable file inside of the migration folder to create the db objects.
+        $this->settings->set('enable', true);
         $enable = new Enable();
         $enable->safeUp();
         return parent::enable();
@@ -54,7 +57,7 @@ class Module extends \humhub\modules\content\components\ContentContainerModule
     */
     public function disable()
     {
-
+        $this->settings->set('enable', false);
         foreach (Relationship::find()->all() as $relationship)
         {
             $relationship->delete();
@@ -67,14 +70,6 @@ class Module extends \humhub\modules\content\components\ContentContainerModule
         parent::disable();
     }
 
-    /**
-    * @inheritdoc
-    */
-    public function disableContentContainer(ContentContainerActiveRecord $container)
-    {
-        // Clean up space related data, don't remove the parent::disable()!!!
-        parent::disable();
-    }
 
     /**
     * @inheritdoc
@@ -103,11 +98,25 @@ class Module extends \humhub\modules\content\components\ContentContainerModule
      */
     public function getIsEnabled()
     {
-        if (Yii::$app->getModule('relationships')->settings->get('enable')) {
+        $enabled = $this->settings->get('enable');
+        if ($this->settings->get('enable')) {
+            return true;
+        }
+
+        $enabled = Yii::$app->hasModule('relationships');
+        if ($enabled)
+        {
+            $this->settings->set('enable', true);
             return true;
         }
 
         return false;
+    }
+
+    public function disableContentContainer(ContentContainerActiveRecord $container)
+    {
+
+        parent::disableContentContainer($container);
     }
 
     /**
@@ -117,6 +126,17 @@ class Module extends \humhub\modules\content\components\ContentContainerModule
     public function getName()
     {
         return "Relationships";
+    }
+
+    public function getDefaultUserSettings(){
+
+        $settings = [];
+
+        $settings['showOnProfile'] = 1;
+        $settings['showChangesToRelationshipsOnWall'] = 1;
+
+        return \GuzzleHttp\json_encode($settings);
+
     }
 
     /**

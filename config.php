@@ -3,6 +3,7 @@
 use conerd\humhub\modules\relationships\Events;
 use humhub\modules\admin\widgets\AdminMenu;
 use humhub\modules\user\models\User;
+use humhub\modules\user\widgets\AccountMenu;
 
 return [
 	'id' => 'relationships',
@@ -16,5 +17,6 @@ return [
 		],
         [User::class, User::EVENT_BEFORE_SOFT_DELETE, [Events::class, 'onUserSoftDelete']],
         [User::class, User::EVENT_BEFORE_DELETE, [Events::class, 'onUserDelete']],
+        ['class' => AccountMenu::class, 'event' => AccountMenu::EVENT_INIT, 'callback' => [Events::class, 'onAccountMenuInit']],
 	],
 ];

@@ -11,6 +11,8 @@ use humhub\modules\content\components\ContentActiveRecord;
 use humhub\modules\content\models\Content;
 use humhub\modules\user\models\User;
 use Yii;
+use yii\data\ActiveDataProvider;
+use yii\db\Query;
 
 /**
  * This is the model class for table "relationship".
@@ -158,6 +160,36 @@ class Relationship extends ContentActiveRecord
     public function userRemovedRelationship()
     {
         RemoveRelationship::instance()->from($this->user)->about($this)->send($this->otherUser);
+    }
+
+    public static function getAllRelationships()
+    {
+        $query = new Query();
+        $query->select(['relationship.id as id', 'relationship.user_id AS send_user', 'relationship.other_user_id AS recv_user', 'relationship_type.type AS type',
+            'send_user.username AS send_user_username', 'recv_user.username AS recv_user_username', 'relationship.approved AS approved' ])
+            ->from('relationship')
+            ->leftJoin('user AS send_user', 'send_user.id = relationship.user_id' )
+            ->leftJoin('user AS recv_user', 'recv_user.id = relationship.other_user_id' )
+            ->leftJoin('relationship_type', 'relationship_type.id = relationship.relationship_type')
+            ->where(['relationship.user_id' => Yii::$app->user->id])->orWhere(['relationship.other_user_id' => Yii::$app->user->id])
+            ->andWhere(['approved' => 1])->all();
+
+        return $query;
+    }
+
+    public static function getAllPendingRelationshipsQuery(){
+
+        $query = new Query();
+        $query->select(['relationship.id as id', 'relationship.user_id AS send_user', 'relationship.other_user_id AS recv_user', 'relationship_type.type AS type',
+            'send_user.username AS send_user_username', 'recv_user.username AS recv_user_username', 'relationship.approved AS approved' ])
+            ->from('relationship')
+            ->leftJoin('user AS send_user', 'send_user.id = relationship.user_id' )
+            ->leftJoin('user AS recv_user', 'recv_user.id = relationship.other_user_id' )
+            ->leftJoin('relationship_type', 'relationship_type.id = relationship.relationship_type')
+            ->where(['relationship.user_id' => Yii::$app->user->id])->orWhere(['relationship.other_user_id' => Yii::$app->user->id])
+            ->andWhere(['approved' => 0])->all();
+
+        return $query;
     }
 
 

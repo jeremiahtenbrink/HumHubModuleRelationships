@@ -33,7 +33,7 @@ conerd\humhub\modules\relationships\assets\Assets::register($this);
                 [
                     'prompt' => "Select Relationship Category",
                     'url' => Url::to(['get-types']),
-                    'onchange' => "GetRelationshipTypes(this)"
+                    'onchange' => "humhub.modules.relationships.getRelationshipTypes(this)"
                 ]
             ) ?>
 

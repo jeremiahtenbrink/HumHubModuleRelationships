@@ -58,6 +58,14 @@ class Relationships extends Widget
      */
     public function run()
     {
+
+        $enabled = $this->user->moduleManager->isEnabled('relationships');
+
+        if (!$enabled)
+        {
+            return;
+        }
+
         $relationships = Relationship::find()->where(['user_id' => $this->user->id])->all();
 
         $relationshipUsers = [];
