@@ -1,10 +1,10 @@
 <?php
 
-namespace conerd\humhub\modules\relationships\controllers;
+namespace humhub\modules\relationships\controllers;
 
-use conerd\humhub\modules\relationships\models\Relationship;
-use conerd\humhub\modules\relationships\models\RelationshipCategory;
-use conerd\humhub\modules\relationships\models\RelationshipType;
+use humhub\modules\relationships\models\Relationship;
+use humhub\modules\relationships\models\RelationshipCategory;
+use humhub\modules\relationships\models\RelationshipType;
 use humhub\modules\content\components\ContentActiveRecord;
 use humhub\modules\content\models\Content;
 use humhub\modules\user\models\User;
@@ -16,7 +16,7 @@ use Yii;
 /**
  * @author CO_Nerd
  * Class RelationshipController
- * @package conerd\humhub\modules\relationships\controllers
+ * @package humhub\modules\relationships\controllers
  */
 class RelationshipController extends Controller
 {
@@ -100,7 +100,7 @@ class RelationshipController extends Controller
 
             foreach ($relationshipTypes as $type)
             {
-                /* @var $type \conerd\humhub\modules\relationships\models\RelationshipType */
+                /* @var $type \humhub\modules\relationships\models\RelationshipType */
                 echo "<option value='" . $type->id . "'>" . $type->type . "</option>";
             }
         }else {
@@ -219,7 +219,7 @@ class RelationshipController extends Controller
     public function actionApproveRelationship($id, $url)
     {
         $relationship = Relationship::find()->where(['id' => $id])->one();
-        /* @var $relationship \conerd\humhub\modules\relationships\models\Relationship */
+        /* @var $relationship \humhub\modules\relationships\models\Relationship */
         $relationship->approved = 1;
         $relationship->content->visibility = Content::VISIBILITY_PUBLIC;
         $relationship->content->container = User::find()->where(['id' => $relationship->user_id])->one();
@@ -244,7 +244,7 @@ class RelationshipController extends Controller
     {
         $relationship = Relationship::find()->where(['id' => $id])->one();
 
-        /* @var $relationship \conerd\humhub\modules\relationships\models\Relationship */
+        /* @var $relationship \humhub\modules\relationships\models\Relationship */
         $relationships = Relationship::find()->where(['user_id' => $relationship->user_id])
             ->andWhere(['other_user_id' => $relationship->other_user_id])->all();
 

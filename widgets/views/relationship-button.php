@@ -6,7 +6,7 @@
  * Time: 9:46 AM
  */
 
-/* @var $relationship \conerd\humhub\modules\relationships\models\Relationship */
+/* @var $relationship \humhub\modules\relationships\models\Relationship */
 /* @var $userUrl string */
 
 use humhub\libs\Html;

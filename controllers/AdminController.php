@@ -1,11 +1,12 @@
 <?php
 
-namespace conerd\humhub\modules\relationships\controllers;
+namespace humhub\modules\relationships\controllers;
 
-use conerd\humhub\modules\relationships\models\RelationshipCategory;
-use conerd\humhub\modules\relationships\models\RelationshipCategorySearch;
-use conerd\humhub\modules\relationships\models\RelationshipType;
-use conerd\humhub\modules\relationships\models\RelationshipTypeSearch;
+use humhub\modules\relationships\migration\Enable;
+use humhub\modules\relationships\models\RelationshipCategory;
+use humhub\modules\relationships\models\RelationshipCategorySearch;
+use humhub\modules\relationships\models\RelationshipType;
+use humhub\modules\relationships\models\RelationshipTypeSearch;
 use humhub\modules\admin\components\Controller;
 use Yii;
 use yii\helpers\Url;
@@ -13,7 +14,7 @@ use yii\helpers\Url;
 /**
  * @author CO_Nerd
  * Class AdminController
- * @package conerd\humhub\modules\relationships\controllers
+ * @package humhub\modules\relationships\controllers
  */
 
 class AdminController extends Controller
@@ -177,6 +178,13 @@ class AdminController extends Controller
             'type' => $type,
         ]);
 
+    }
+
+    public function actionEnable()
+    {
+        $enable = new Enable();
+        $enable->up();
+        return true;
     }
 
 }

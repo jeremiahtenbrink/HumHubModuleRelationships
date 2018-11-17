@@ -3,8 +3,8 @@
 /* @var $this \yii\web\View */
 /* @var $relationshipCategory \yii\data\ActiveDataProvider */
 /* @var $relationshipType \yii\data\ActiveDataProvider */
-/* @var $typeSearch \conerd\humhub\modules\relationships\models\RelationshipTypeSearch */
-/* @var $categorySearch \conerd\humhub\modules\relationships\models\RelationshipCategorySearch */
+/* @var $typeSearch \humhub\modules\relationships\models\RelationshipTypeSearch */
+/* @var $categorySearch \humhub\modules\relationships\models\RelationshipCategorySearch */
 
 use yii\widgets\Pjax;
 use kartik\widgets\ActiveForm;

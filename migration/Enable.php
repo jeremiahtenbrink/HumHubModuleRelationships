@@ -6,7 +6,7 @@
  * Time: 3:55 PM
  */
 
-namespace conerd\humhub\modules\relationships\migration;
+namespace humhub\modules\relationships\migration;
 
 use yii\db\Migration;
 use yii;

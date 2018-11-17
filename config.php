@@ -1,14 +1,14 @@
 <?php
 
-use conerd\humhub\modules\relationships\Events;
+use humhub\modules\relationships\Events;
 use humhub\modules\admin\widgets\AdminMenu;
 use humhub\modules\user\models\User;
 use humhub\modules\user\widgets\AccountMenu;
 
 return [
 	'id' => 'relationships',
-	'class' => 'conerd\humhub\modules\relationships\Module',
-	'namespace' => 'conerd\humhub\modules\relationships',
+	'class' => 'humhub\modules\relationships\Module',
+	'namespace' => 'humhub\modules\relationships',
 	'events' => [
 		[
 			'class' => AdminMenu::class,

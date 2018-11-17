@@ -1,10 +1,10 @@
 <?php
 
-namespace conerd\humhub\modules\relationships;
+namespace humhub\modules\relationships;
 
-use conerd\humhub\modules\relationships\migration\Enable;
-use conerd\humhub\modules\relationships\migration\Uninstall;
-use conerd\humhub\modules\relationships\models\Relationship;
+use humhub\modules\relationships\migration\Enable;
+use humhub\modules\relationships\migration\Uninstall;
+use humhub\modules\relationships\models\Relationship;
 use humhub\modules\content\models\ContentContainer;
 use humhub\modules\content\models\ContentContainerModuleState;
 use Yii;
@@ -16,7 +16,7 @@ use humhub\modules\user\models\User;
  * @author CO_Nerd
  * Class Module
  *
- * @package conerd\humhub\modules\relationships
+ * @package humhub\modules\relationships
  */
 class Module extends \humhub\modules\content\components\ContentContainerModule
 {
@@ -145,10 +145,10 @@ class Module extends \humhub\modules\content\components\ContentContainerModule
     public function getNotifications()
     {
         return [
-            'conerd\humhub\modules\relationships\notifications\CreateRelationship',
-            'conerd\humhub\modules\relationships\notifications\ApproveRelationship',
-            'conerd\humhub\modules\relationships\notifications\DenyRelationship',
-            'conerd\humhub\modules\relationships\notifications\RemoveRelationship',
+            'humhub\modules\relationships\notifications\CreateRelationship',
+            'humhub\modules\relationships\notifications\ApproveRelationship',
+            'humhub\modules\relationships\notifications\DenyRelationship',
+            'humhub\modules\relationships\notifications\RemoveRelationship',
         ];
     }
 }

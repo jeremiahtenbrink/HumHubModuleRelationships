@@ -1,6 +1,6 @@
 <?php
 
-namespace  conerd\humhub\modules\relationships\assets;
+namespace  humhub\modules\relationships\assets;
 
 use yii\web\AssetBundle;
 

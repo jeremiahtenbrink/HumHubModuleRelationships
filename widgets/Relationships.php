@@ -6,11 +6,12 @@
  * Time: 8:44 PM
  */
 
-namespace conerd\humhub\modules\relationships\widgets;
+namespace humhub\modules\relationships\widgets;
 
-use conerd\humhub\modules\relationships\models\RelationshipType;
+use humhub\modules\relationships\models\RelationshipType;
+use humhub\modules\relationships\Module;
 use humhub\components\Widget;
-use conerd\humhub\modules\relationships\models\Relationship;
+use humhub\modules\relationships\models\Relationship;
 use humhub\modules\user\models\User;
 use Yii;
 use yii\helpers\Url;
@@ -18,7 +19,7 @@ use yii\helpers\Url;
 /**
  * @author CO_Nerd
  * Class Relationships
- * @package conerd\humhub\modules\relationships\widgets
+ * @package humhub\modules\relationships\widgets
  */
 class Relationships extends Widget
 {
@@ -60,6 +61,22 @@ class Relationships extends Widget
     {
 
         $enabled = $this->user->moduleManager->isEnabled('relationships');
+        /* @var $module Module */
+        $module = Yii::$app->getModule('relationships');
+        $settings = $module->settings->contentContainer($this->user)->get('relationshipSettings');
+
+        if ($settings == null){
+            $settings = $module->getDefaultUserSettings();
+            $module->settings->contentContainer($this->user)->set('relationshipSettings', json_encode($settings));
+        }else {
+            $settings = \GuzzleHttp\json_decode($settings, true);
+        }
+
+
+
+        if ($settings['showOnProfile'] == 0){
+            return;
+        }
 
         if (!$enabled)
         {
@@ -81,7 +98,7 @@ class Relationships extends Widget
         $relationshipTypes = [];
         foreach ($types as $type)
         {
-            /* @var $type \conerd\humhub\modules\relationships\models\RelationshipType */
+            /* @var $type \humhub\modules\relationships\models\RelationshipType */
             $relationshipTypes[$type->id] = $type->type;
         }
 

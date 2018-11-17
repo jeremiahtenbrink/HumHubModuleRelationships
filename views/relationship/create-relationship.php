@@ -7,8 +7,8 @@
  */
 
 /* @var $this \yii\web\View */
-/* @var $relationship \conerd\humhub\modules\relationships\models\Relationship */
-/* @var $relationshipCategory \conerd\humhub\modules\relationships\models\RelationshipCategory */
+/* @var $relationship \humhub\modules\relationships\models\Relationship */
+/* @var $relationshipCategory \humhub\modules\relationships\models\RelationshipCategory */
 /* @var $friends array[$user->id => user ] */
 
 use kartik\form\ActiveForm;
@@ -16,7 +16,7 @@ use yii\helpers\ArrayHelper;
 use humhub\libs\Html;
 use yii\helpers\Url;
 
-conerd\humhub\modules\relationships\assets\Assets::register($this);
+humhub\modules\relationships\assets\Assets::register($this);
 
 ?>
 
@@ -29,7 +29,7 @@ conerd\humhub\modules\relationships\assets\Assets::register($this);
             <?php $form = ActiveForm::begin(['action' => ['create-relationship'],'options' => ['method' => 'post']]); ?>
 
             <?= $form->field($relationshipCategory, 'category')->dropDownList(
-                ArrayHelper::map(\conerd\humhub\modules\relationships\models\RelationshipCategory::find()->all(), 'id', 'category'),
+                ArrayHelper::map(\humhub\modules\relationships\models\RelationshipCategory::find()->all(), 'id', 'category'),
                 [
                     'prompt' => "Select Relationship Category",
                     'url' => Url::to(['get-types']),
@@ -38,7 +38,7 @@ conerd\humhub\modules\relationships\assets\Assets::register($this);
             ) ?>
 
             <?= $form->field($relationship, 'relationship_type')->dropDownList(
-                ArrayHelper::map(\conerd\humhub\modules\relationships\models\RelationshipType::find()->all(), 'id', 'type'),
+                ArrayHelper::map(\humhub\modules\relationships\models\RelationshipType::find()->all(), 'id', 'type'),
                 [
                     'prompt' => "Select Relationship Type",
                 ]

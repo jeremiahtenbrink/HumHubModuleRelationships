@@ -6,17 +6,17 @@
  * Time: 8:44 PM
  */
 
-namespace conerd\humhub\modules\relationships\widgets;
+namespace humhub\modules\relationships\widgets;
 
 use humhub\components\Widget;
-use conerd\humhub\modules\relationships\models\Relationship;
+use humhub\modules\relationships\models\Relationship;
 use humhub\modules\user\models\User;
 use Yii;
 
 /**
  * @author CO_Nerd
  * Class RelationshipButton
- * @package conerd\humhub\modules\relationships\widgets
+ * @package humhub\modules\relationships\widgets
  */
 class RelationshipButton extends Widget
 {
@@ -69,7 +69,7 @@ class RelationshipButton extends Widget
 
         $relationship = Relationship::find()->where(['user_id' => $this->user->id])
             ->andWhere(['other_user_id' => Yii::$app->user->id])->one();
-        /* @var $relationship \conerd\humhub\modules\relationships\models\Relationship */
+        /* @var $relationship \humhub\modules\relationships\models\Relationship */
         if (!$relationship)
         {
             return;

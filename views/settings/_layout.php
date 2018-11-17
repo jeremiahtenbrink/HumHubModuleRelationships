@@ -18,7 +18,7 @@ use humhub\widgets\FooterMenu;
 
                     </div>
                     <div class="panel-body">
-                        <?php echo \conerd\humhub\modules\relationships\widgets\SettingsMenue::widget()?>
+                        <?php echo \humhub\modules\relationships\widgets\SettingsMenue::widget()?>
                     </div>
                 </div>
 

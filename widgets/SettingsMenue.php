@@ -6,9 +6,9 @@
  * Time: 4:13 PM
  */
 
-namespace conerd\humhub\modules\relationships\widgets;
+namespace humhub\modules\relationships\widgets;
 
-use conerd\humhub\modules\relationships\models\Relationship;
+use humhub\modules\relationships\models\Relationship;
 use yii\helpers\Url;
 use Yii;
 

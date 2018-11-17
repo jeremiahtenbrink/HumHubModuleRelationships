@@ -3,7 +3,7 @@
 use humhub\widgets\Button;
 
 // Register our module assets, this could also be done within the controller
-\conerd\humhub\modules\relationships\assets\Assets::register($this);
+\humhub\modules\relationships\assets\Assets::register($this);
 
 $displayName = (Yii::$app->user->isGuest) ? 'Guest' : Yii::$app->user->getIdentity()->displayName;
 

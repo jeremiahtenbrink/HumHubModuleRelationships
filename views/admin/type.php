@@ -7,7 +7,7 @@
  */
 
 /* @var $this yii\web\View */
-/* @var $type \conerd\humhub\modules\relationships\models\RelationshipType */
+/* @var $type \humhub\modules\relationships\models\RelationshipType */
 
 use yii\widgets\ActiveForm;
 use humhub\libs\Html;
@@ -46,7 +46,7 @@ use yii\helpers\ArrayHelper;
                     <?php $form = ActiveForm::begin(['action' => $url,'options' => ['method' => 'post']]); ?>
 
                     <?= $form->field($type, 'relationship_category')->dropDownList(
-                        ArrayHelper::map(\conerd\humhub\modules\relationships\models\RelationshipCategory::find()->all(), 'id', 'category'),
+                        ArrayHelper::map(\humhub\modules\relationships\models\RelationshipCategory::find()->all(), 'id', 'category'),
                         ['prompt' => "Select Relationship Category"]
 
                     ) ?>

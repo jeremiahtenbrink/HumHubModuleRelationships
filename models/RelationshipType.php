@@ -1,6 +1,6 @@
 <?php
 
-namespace conerd\humhub\modules\relationships\models;
+namespace humhub\modules\relationships\models;
 
 use Yii;
 

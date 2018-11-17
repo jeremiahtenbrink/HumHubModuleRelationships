@@ -1,12 +1,12 @@
 <?php
 
-namespace conerd\humhub\modules\relationships\models;
+namespace humhub\modules\relationships\models;
 
-use conerd\humhub\modules\relationships\activities\CreatedRelationship;
-use conerd\humhub\modules\relationships\notifications\ApproveRelationship;
-use conerd\humhub\modules\relationships\notifications\CreateRelationship;
-use conerd\humhub\modules\relationships\notifications\DenyRelationship;
-use conerd\humhub\modules\relationships\notifications\RemoveRelationship;
+use humhub\modules\relationships\activities\CreatedRelationship;
+use humhub\modules\relationships\notifications\ApproveRelationship;
+use humhub\modules\relationships\notifications\CreateRelationship;
+use humhub\modules\relationships\notifications\DenyRelationship;
+use humhub\modules\relationships\notifications\RemoveRelationship;
 use humhub\modules\content\components\ContentActiveRecord;
 use humhub\modules\content\models\Content;
 use humhub\modules\user\models\User;

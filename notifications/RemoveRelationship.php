@@ -6,7 +6,7 @@
  * @license https://www.humhub.com/licences
  */
 
-namespace conerd\humhub\modules\relationships\notifications;
+namespace humhub\modules\relationships\notifications;
 
 use Yii;
 use yii\bootstrap\Html;

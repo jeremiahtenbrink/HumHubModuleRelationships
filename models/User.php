@@ -6,7 +6,7 @@
  * Time: 10:19 PM
  */
 
-namespace conerd\humhub\modules\relationships\models;
+namespace humhub\modules\relationships\models;
 
 class User extends \humhub\modules\user\models\User
 {

@@ -7,7 +7,7 @@
  */
 
 /* @var $this yii\web\View */
-/* @var $category conerd\humhub\modules\relationships\models\RelationshipCategory */
+/* @var $category humhub\modules\relationships\models\RelationshipCategory */
 
 use yii\widgets\ActiveForm;
 use humhub\libs\Html;

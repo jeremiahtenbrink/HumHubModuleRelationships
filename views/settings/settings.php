@@ -6,12 +6,12 @@
  * Time: 3:54 PM
  */
 
-/* @var $settingsForm \conerd\humhub\modules\relationships\models\SettingsForm */
+/* @var $settingsForm \humhub\modules\relationships\models\SettingsForm */
 
 use humhub\modules\ui\form\widgets\ActiveForm;
 use yii\helpers\Url;
 
-\conerd\humhub\modules\relationships\assets\Assets::register($this);
+\humhub\modules\relationships\assets\Assets::register($this);
 
 ?>
 <?php $form = ActiveForm::begin(['action' => ['manage'],'options' => ['method' => 'post']]); ?>

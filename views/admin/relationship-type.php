@@ -8,13 +8,13 @@
 
 /* @var $view \yii\web\View */
 /* @var $relationshipType \yii\data\ActiveDataProvider */
-/* @var $typeSearch \conerd\humhub\modules\relationships\models\RelationshipTypeSearch */
+/* @var $typeSearch \humhub\modules\relationships\models\RelationshipTypeSearch */
 
 use yii\widgets\Pjax;
 use humhub\widgets\GridView;
 use yii\helpers\Url;
 use humhub\libs\Html;
-$categories = \yii\helpers\ArrayHelper::map(\conerd\humhub\modules\relationships\models\RelationshipCategory::find()->all(), 'id', 'category')
+$categories = \yii\helpers\ArrayHelper::map(\humhub\modules\relationships\models\RelationshipCategory::find()->all(), 'id', 'category')
 ?>
 
 
@@ -38,7 +38,7 @@ $categories = \yii\helpers\ArrayHelper::map(\conerd\humhub\modules\relationships
             'format' => 'text',
             'value' => function($model)
             {
-              return \conerd\humhub\modules\relationships\models\RelationshipCategory::find()
+              return \humhub\modules\relationships\models\RelationshipCategory::find()
                   ->where(['id' => $model->relationship_category])->one()->category;
             },
 

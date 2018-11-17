@@ -8,7 +8,7 @@
 
 /* @var $view \yii\web\View */
 /* @var $relationshipCategory \yii\data\ActiveDataProvider */
-/* @var $categorySearch \conerd\humhub\modules\relationships\models\RelationshipCategorySearch */
+/* @var $categorySearch \humhub\modules\relationships\models\RelationshipCategorySearch */
 
 use yii\widgets\Pjax;
 use humhub\widgets\GridView;

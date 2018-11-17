@@ -1,8 +1,8 @@
 <?php
 
-namespace  conerd\humhub\modules\relationships;
+namespace  humhub\modules\relationships;
 
-use conerd\humhub\modules\relationships\models\Relationship;
+use humhub\modules\relationships\models\Relationship;
 use humhub\components\Event;
 use Yii;
 use yii\helpers\Url;
@@ -10,7 +10,7 @@ use yii\helpers\Url;
 /**
  * @author CO_Nerd
  * Class Events
- * @package conerd\humhub\modules\relationships
+ * @package humhub\modules\relationships
  */
 class Events
 {

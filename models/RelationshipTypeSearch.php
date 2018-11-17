@@ -1,15 +1,15 @@
 <?php
 
-namespace conerd\humhub\modules\relationships\models;
+namespace humhub\modules\relationships\models;
 
 use Yii;
 use yii\base\Model;
 use yii\data\ActiveDataProvider;
-use conerd\humhub\modules\relationships\models\RelationshipType;
+use humhub\modules\relationships\models\RelationshipType;
 
 /**
  * @author CO_Nerd
- * RelationshipTypeSearch represents the model behind the search form of `conerd\humhub\modules\relationships\models\RelationshipType`.
+ * RelationshipTypeSearch represents the model behind the search form of `humhub\modules\relationships\models\RelationshipType`.
  */
 class RelationshipTypeSearch extends RelationshipType
 {

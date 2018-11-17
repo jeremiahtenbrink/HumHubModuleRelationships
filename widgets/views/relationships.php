@@ -6,7 +6,7 @@
  * Time: 8:55 PM
  */
 
-/* @var $relationships \conerd\humhub\modules\relationships\models\Relationship[] */
+/* @var $relationships \humhub\modules\relationships\models\Relationship[] */
 /* @var $relationshipTypes array[id => string] */
 /* @var $user \humhub\modules\user\models\User */
 /* @var $isProfileOwner bool */
@@ -23,7 +23,7 @@ use humhub\libs\Html;
     <div class="panel panel-default">
 
         <div class="panel-heading">
-            <h4>User Relationships <?= \conerd\humhub\modules\relationships\widgets\RelationshipButton::widget(['user' => $user, 'url' => $userUrl]) ?> </h4>
+            <h4>User Relationships <?= \humhub\modules\relationships\widgets\RelationshipButton::widget(['user' => $user, 'url' => $userUrl]) ?> </h4>
 
         </div>
 
@@ -53,8 +53,8 @@ use humhub\libs\Html;
                     {
                         // profile owner and other person in the relationship can see none approved relationships
                         $otherUser = $relationshipUsers[$relationship->other_user_id];
-                        /* @var $relationshipType \conerd\humhub\modules\relationships\models\RelationshipType */
-                        $relationshipType = \conerd\humhub\modules\relationships\models\RelationshipType::find()
+                        /* @var $relationshipType \humhub\modules\relationships\models\RelationshipType */
+                        $relationshipType = \humhub\modules\relationships\models\RelationshipType::find()
                             ->where(['id' => $relationship->relationship_type])->one();
 
                         echo "<td>" . $relationshipType->type . "</td><td> " . $otherUser->displayName . "</td><td> Pending...</td>";

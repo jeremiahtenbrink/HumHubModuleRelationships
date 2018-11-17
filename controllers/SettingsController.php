@@ -6,12 +6,12 @@
  * Time: 5:48 PM
  */
 
-namespace conerd\humhub\modules\relationships\controllers;
+namespace humhub\modules\relationships\controllers;
 
-use conerd\humhub\modules\relationships\models\SettingsForm;
-use conerd\humhub\modules\relationships\models\User;
+use humhub\modules\relationships\models\SettingsForm;
+use humhub\modules\relationships\models\User;
 use humhub\components\Controller;
-use conerd\humhub\modules\relationships\models\Relationship;
+use humhub\modules\relationships\models\Relationship;
 use humhub\modules\content\models\ContentContainer;
 use Yii;
 use yii\data\ActiveDataProvider;
@@ -19,7 +19,7 @@ use yii\data\ActiveDataProvider;
 /**
  * @author CO_Nerd
  * Class SettingsController
- * @package conerd\humhub\modules\relationships\controllers
+ * @package humhub\modules\relationships\controllers
  */
 class SettingsController extends Controller
 {

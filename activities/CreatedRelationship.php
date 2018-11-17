@@ -6,7 +6,7 @@
  * @license https://www.humhub.com/licences
  */
 
-namespace conerd\humhub\modules\relationships\activities;
+namespace humhub\modules\relationships\activities;
 
 use humhub\modules\activity\components\BaseActivity;
 use humhub\modules\content\models\Content;

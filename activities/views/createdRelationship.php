@@ -4,7 +4,7 @@
 /* @var $contentContainer \humhub\modules\user\models\User */
 /* @var $originator \humhub\modules\user\models\User */
 /* @var $record \humhub\modules\activity\models\Activity */
-/* @var $source \conerd\humhub\modules\relationships\models\Relationship */
+/* @var $source \humhub\modules\relationships\models\Relationship */
 
 use yii\helpers\Html;
 

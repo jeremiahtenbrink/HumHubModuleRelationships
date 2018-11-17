@@ -13,7 +13,7 @@
 use humhub\widgets\GridView;
 use humhub\libs\Html;
 
-\conerd\humhub\modules\relationships\assets\Assets::register($this);
+\humhub\modules\relationships\assets\Assets::register($this);
 
 
 ?>

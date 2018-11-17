@@ -6,13 +6,13 @@
  * Time: 9:46 AM
  */
 
-/* @var $relationship \conerd\humhub\modules\relationships\models\Relationship */
+/* @var $relationship \humhub\modules\relationships\models\Relationship */
 /* @var $url string */
 
 use humhub\libs\Html;
 use yii\helpers\Url;
 
-\conerd\humhub\modules\relationships\assets\Assets::register($this);
+\humhub\modules\relationships\assets\Assets::register($this);
 ?>
 
 <div class="btn-group pull-right">
