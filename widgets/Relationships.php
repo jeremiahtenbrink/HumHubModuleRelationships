@@ -74,9 +74,9 @@ class Relationships extends Widget
 
 
 
-        if ($settings['showOnProfile'] == 0){
-            return;
-        }
+//        if ($settings['showOnProfile'] == 0){
+//            return;
+//        }
 
         if (!$enabled)
         {
